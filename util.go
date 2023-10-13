@@ -93,9 +93,9 @@ func CheckBearerAuth(r *http.Request) *BearerAuth {
 // getClientAuth checks client basic authentication in params if allowed,
 // otherwise gets it from the header.
 // Sets an error on the response if no auth is present or a server error occurs.
-func (s Server) getClientAuth(w *Response, r *http.Request, AllowClientSecretInParams bool) *BasicAuth {
+func (s Server) getClientAuth(w *Response, r *http.Request, allowClientSecretInParams bool) *BasicAuth {
 
-	if AllowClientSecretInParams {
+	if allowClientSecretInParams {
 		// Allow for auth without password
 		if _, hasSecret := r.Form["client_secret"]; hasSecret {
 			auth := &BasicAuth{
